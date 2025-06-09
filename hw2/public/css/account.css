@@ -1,0 +1,152 @@
+.account-container {
+  padding: 60px 20px;
+  text-align: center;
+  font-family: var(--title-font);
+  max-width: 800px;
+  margin: 20px auto;
+  border-radius: 16px;
+}
+
+.account-container h1 {
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: var(--marrone);
+}
+
+.account-section {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--sabbia-hover);
+  font-family: Arial, sans-serif;
+}
+
+.account-section h2 {
+  font-family: var(--title-font);
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  color: var(--nero);
+}
+
+.account-section p {
+  margin: 6px 0;
+}
+
+.account-section .account-button {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.account-section.danger .account-button.danger {
+  background-color: #b0392f;
+}
+
+.account-section.danger .account-button.danger:hover {
+  background-color: #7a211c;
+}
+
+.liked-posts-section {
+  display: grid;
+  justify-content: flex-start;
+  padding: 60px 20px;
+  max-width: 100vw;
+  background-color: var(--sabbia);
+  font-family: var(--title-font);
+  text-align: center;
+}
+
+ .liked-posts-section h2{
+  font-size: 2rem;
+  color: var(--marrone);
+  margin-bottom: 40px;
+  text-decoration: underline;
+}
+
+.liked-post-title {
+  color: var(--nero);
+}
+
+.no-liked-msg {
+  font-style: italic;
+  color: var(--nero);
+  margin-top: 20px;
+}
+
+#liked-posts-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+.liked-post {
+    background: white;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-width: 300px;
+}
+
+.liked-post img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.error {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+.bookings-section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#bookings-container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 10px auto;
+  box-shadow: 0 4px 8px rgba(60, 59, 58, 0.2);
+  font-family: Arial, sans-serif;
+  color: var(--nero);
+  margin-bottom: 20px;
+}
+
+.bookings-section h2 {
+  font-size: 2rem;
+  color: var(--marrone);
+  padding-top: 20px;
+  margin-bottom: 40px;
+  text-decoration: underline;
+}
+
+.booked-flight {
+  background-color: var(--sabbia);
+  color: whitesmoke;
+  padding: 12px 15px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: default;
+  transition: background-color 0.3s ease;
+}
+
+.booked-flight:hover {
+  background-color: var(--sabbia-hover);
+  color: var(--marrone);
+}
+
+.total-price {
+  margin: 25px 0;
+  font-family: var(--title-font);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--marrone);
+  text-align: right;
+}

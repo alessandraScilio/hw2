@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+    --sabbia: rgba(223,208,188,255);
+    --sabbia-hover: rgb(193, 178, 158, 1);
+    --nero: rgba(60,59,58,255);
+    --marrone: rgba(95,74,69,255);
+    --title-font: "Playfair Display", serif;
+    
+}
+
+body {
+    background-color: var(--sabbia);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+
+}
+
+#login-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+#login-container h1 {
+    margin-bottom: 24px;
+    color: var(--nero);
+}
+
+#login-container label {
+    display: block;
+    text-align: left;
+    margin-bottom: 3px;
+    font-weight: 600;
+    color:  var(--nero);
+}
+
+#login-container input[type="text"],
+#login-container input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+#login-container input[type="text"]:focus,
+#login-container input[type="password"]:focus {
+    border-color: var(--nero);
+    outline: none;
+}
+
+#login-container input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color:var(--sabbia);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#login-container input[type="submit"]:hover {
+    background-color: var(--sabbia-hover);
+}
+
+#login-container p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+#login-container a {
+    color: var(--marrone);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#login-container a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+  color: red;
+  white-space: pre-line;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 13px;
+}
+

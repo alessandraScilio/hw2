@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+  --sabbia: rgba(223, 208, 188, 1);
+  --sabbia-hover: rgba(193, 178, 158, 1);
+  --nero: rgba(60, 59, 58, 1);
+  --marrone: rgba(95, 74, 69, 1);
+  --title-font: "Playfair Display", serif;
+}
+
+html {
+    overflow-y: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--title-font), sans-serif;
+  background-color: var(--sabbia);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#signup-container {
+  background-color: #fff;
+  padding: 0 50px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 20px;
+  font-family: var(--title-font), sans-serif;
+}
+
+
+#signup-container h1 {
+  margin-bottom: 24px;
+  color: var(--nero);
+  font-size: 20px;
+}
+
+
+label {
+  display: block;
+  text-align: left;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: var(--nero);
+  font-size: 14px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: var(--marrone);
+  outline: none;
+}
+
+
+#specifiche {
+  padding: 6px 16px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: var(--nero);
+  border-radius: 8px;
+  text-align: left;
+  line-height: 1.6;
+}
+
+
+input[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--sabbia);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: var(--title-font), sans-serif;
+}
+
+input[type="submit"]:hover {
+  background-color: var(--sabbia-hover);
+}
+
+#signup-container p {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+#signup-container a {
+  color: var(--marrone);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#signup-container a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  color: red;
+  white-space: pre-line;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 13px;
+}
+
+
+@media (max-width: 480px) {
+  #signup-container {
+    padding: 28px 20px;
+    border-radius: 12px;
+  }
+
+  #signup-container h1 {
+    font-size: 22px;
+  }
+
+  #specifiche {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  input[type="submit"] {
+    font-size: 15px;
+  }
+}
+
+.allow {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #333;
+}
+
+.allow input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #007BFF; 
+  cursor: pointer;
+}
+
+.allow label {
+  cursor: pointer;
+  user-select: none;
+  font-size: 14px;
+}
