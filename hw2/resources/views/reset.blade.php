@@ -29,7 +29,7 @@
 
          <div class="submit-container">
                     <div class="login-btn">
-                        <input type='submit' value="Login">
+                        <input type='submit' value="Reset and Login">
                     </div>
                 </div>    
 

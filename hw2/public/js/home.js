@@ -7,7 +7,7 @@ function createArticleCard(post) {
     articleCard.classList.add('article-card');
 
     const postImg = document.createElement('img');
-    postImg.src = post.image_url && post.image_url.trim() !== '' ? post.image_url : 'default.jpg';
+    postImg.src = post.image_url && post.image_url.trim() !== '' ? post.image_url : 'pics/default.jpg';
     postImg.alt = post.title;
     articleCard.appendChild(postImg);
 
@@ -56,7 +56,7 @@ function loadPopularPosts() {
     if (!container) return;
     container.innerHTML = '';
 
-    fetch('getPopularPosts.php')
+    fetch(BASE_URL + 'list')
         .then(onResponse)
         .then(onJson);
 }

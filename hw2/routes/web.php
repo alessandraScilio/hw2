@@ -5,8 +5,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ResetController;
-
-
+use App\Http\Controllers\HomeController;
 
 // Homepage
 Route::get('/index', [IndexController::class, 'index'])->name('index');
@@ -24,5 +23,10 @@ Route::post('/signup', [SignupController::class, 'do_signup'])->name('do.form');
 Route::get('/reset', [ResetController::class, 'reset_form'])->name('reset.form');
 Route::post('/reset', [ResetController::class, 'do_reset'])->name('do_reset.form');
 
+// Home page
+Route::get('/home', [HomeController::class, 'home'])->name('home');
+Route::get('list', [HomeController::class, 'list']);
 
+
+// Logout : aggiungilo nell'account
 Route::get('logout', [SignupController::class, 'logout'])->name('logout');

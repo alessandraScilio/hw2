@@ -1,14 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-
-:root {
-    --sabbia: rgba(223,208,188,255);
-    --sabbia-hover: rgb(193, 178, 158, 1);
-    --nero: rgba(60,59,58,255);
-    --marrone: rgba(95,74,69,255);
-    --title-font: "Playfair Display", serif;
-    
-}
-
 body {
     background-color: var(--sabbia);
     display: flex;

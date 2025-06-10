@@ -1,7 +1,7 @@
 #nav-container {
   background-color: var(--sabbia);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  padding: 15px 40px;
+  padding: 15px 20px;
   font-family: var(--title-font);
   top: 0;
   z-index: 1000;
@@ -9,7 +9,7 @@
 
 #nav-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -23,6 +23,7 @@
 
 #menu-container {
   display: flex;
+  justify-content: flex-start;
   gap: 30px;
 }
 
@@ -54,8 +55,8 @@
 }
 
 .auth-button:hover {
-  background-color: var(--marrone);
-  color: var(--bianco);
+  background-color: var(--nero);
+  color: whitesmoke;
 }
 
 .auth-button.signup {
@@ -65,7 +66,7 @@
 
 .auth-button.signup:hover {
   background-color: var(--nero);
-  color: var(--bianco);
+  color: whitesmoke;
 }
 
 @media (max-width: 500px) {
