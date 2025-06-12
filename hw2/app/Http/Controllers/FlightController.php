@@ -116,4 +116,5 @@ class FlightController extends BaseController
         $flights = $this->searchFlights($departureIATA, $destinationIATA, $departureDate, $returnDate, $accessToken);
         return response()->json($flights);
     }
+
 }

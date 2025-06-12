@@ -1,15 +1,14 @@
+<!DOCTYPE html>
 <htlm>
-  <!DOCTYPE html>
-  <head>
+    <head>
     <meta charset="UTF-8">
     <title>TravelHub - Flights</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ url('css/flights.css') }}">
     <link rel="stylesheet"href="{{ url('css/commons.css') }}">
     <script>
-      const BASE_URL = "{{ url('/') }}/"
+    const BASE_URL = "{{ url('/') }}/"
     </script>
-
     <script src='{{ url("js/flights.js")}}' defer></script> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
   </head>

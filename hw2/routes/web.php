@@ -8,6 +8,7 @@ use App\Http\Controllers\ResetController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\FlightController;
+use App\Http\Controllers\BookingController;
 
 
 
@@ -34,6 +35,10 @@ Route::get('list', [HomeController::class, 'list']);
 // Flights
 Route::get('/flight', [FlightController::class, 'flight'])->name('flight');
 Route::post('/search', [FlightController::class, 'search']);
+
+// Bookings
+Route::post('/check_flight', [BookingController::class, 'check_flight']);
+Route::post('/book_flight', [BookingController::class, 'book_flight']);
 
 
 

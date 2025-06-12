@@ -15,15 +15,17 @@ function bookFlight(event, flightNumber, price) {
     bookedBtn.textContent = 'Booked';
     bookedBtn.disabled = true;
 
-    const data = { 
-        flight_id: flightNumber, 
-        flight_price: price
-    };
+    const formData = new FormData();
+    formData.append('flight_id', flightNumber);
+    formData.append('price',price );
 
-    fetch('book_flight.php', {
+    const meta_element = document.querySelector('meta[name="csrf-token"]');
+    const csrf_token = meta_element.content;
+    formData.append ('_token', csrf_token);
+    
+    fetch(BASE_URL + 'book_flight', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        body: formData
     })
     .then(onTextResponse)
     .then(onBookFlightSuccess);
@@ -43,15 +45,25 @@ function onCheckFlightResult(flightNumber, price, bookBtn) {
     };
 }
 
-function checkFlightAvailability(flightNumber, price, bookBtn) {
-    const data = { flight_id: flightNumber };
+function handleCheckFlightResponse(response) {
+    if (!response.ok) {
+        throw new Error('Errore nella risposta del server');
+    }
+    return response.json();
+}
 
-    fetch('check_flight.php', {
+function checkFlightAvailability(flightNumber, price, bookBtn) {
+    const formData = new FormData();
+    formData.append('flight_id', flightNumber);
+    const meta_element = document.querySelector('meta[name="csrf-token"]');
+    const csrf_token = meta_element.content;
+    formData.append ('_token', csrf_token);
+
+    fetch(BASE_URL + 'check_flight', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        body: formData
     })
-    .then(handleResponse)
+    .then(handleCheckFlightResponse)
     .then(onCheckFlightResult(flightNumber, price, bookBtn));
 }
 
@@ -153,7 +165,7 @@ function handleResult(flights) {
 
         const bookBtn = document.createElement('button');
         bookBtn.classList.add('book-button');
-        // checkFlightAvailability(flightNumber, price, bookBtn);
+        checkFlightAvailability(flightNumber, price, bookBtn);
         flightContent.appendChild(infoDiv);
         flightContent.appendChild(bookBtn);
         flightDiv.appendChild(flightContent);
