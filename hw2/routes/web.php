@@ -6,6 +6,10 @@ use App\Http\Controllers\SignupController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\FlightController;
+
+
 
 // Homepage
 Route::get('/index', [IndexController::class, 'index'])->name('index');
@@ -26,6 +30,15 @@ Route::post('/reset', [ResetController::class, 'do_reset'])->name('do_reset.form
 // Home page
 Route::get('/home', [HomeController::class, 'home'])->name('home');
 Route::get('list', [HomeController::class, 'list']);
+
+// Flights
+Route::get('/flight', [FlightController::class, 'flight'])->name('flight');
+Route::post('/search', [FlightController::class, 'search']);
+
+
+
+// Articles
+Route::get('/article', [ArticleController::class, 'article'])->name('article');
 
 
 // Logout : aggiungilo nell'account

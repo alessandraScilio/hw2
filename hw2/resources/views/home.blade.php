@@ -15,12 +15,11 @@
 
 <nav id="nav-container">
   <div id="nav-content">
-    
     <a href="{{ url('home') }}" id="site-name">TravelHub</a>
 
     <div id="menu-container">
-      <a class="menu-item" href="articles.php">Articles</a>
-      <a class="menu-item" href="flights.php">Flights</a>
+      <a class="menu-item" href="{{ route('article') }}">Articles</a>
+      <a class="menu-item" href="{{ route('flight') }}">Flights</a>
       <a class="menu-item" href="#">Hotels</a>
       <a class="menu-item" href="#">Channels</a>
     </div>
@@ -39,7 +38,7 @@
   <div id="articles-grid"></div>
 
   <div class="more-articles-link">
-    <a href="articles.php" class="arrow-link">View All Articles →</a>
+    <a href="{{ route('article') }}" class="arrow-link">View All Articles →</a>
   </div>
 </section>
 
@@ -50,7 +49,7 @@
       <h2>Find the Best Flight Deals</h2>
       <p>Save on your next adventure with exclusive offers and real-time flight tracking.  
       Explore destinations worldwide at unbeatable prices.</p>
-      <a href="flights.php" class="deal-button">View Flight Offers →</a>
+      <a href="{{ route('flight') }}" class="deal-button">View Flight Offers →</a>
     </div>
     <div class="deal-image">
       <img src="{{ asset('pics/flight.jpg') }}" alt="Flight deals">

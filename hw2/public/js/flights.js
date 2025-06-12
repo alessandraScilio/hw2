@@ -30,19 +30,6 @@ function bookFlight(event, flightNumber, price) {
 }
 
 
-function handleError(error) {
-    const output = document.getElementById('flight-result');
-    output.textContent = "Errore";
-    console.error('Errore fetch:', error);
-}
-
-function handleResponse(response) {
-    if (!response.ok) {
-        throw new Error('Errore nella risposta del server');
-    }
-    return response.json();
-}
-
 function onCheckFlightResult(flightNumber, price, bookBtn) {
     return function(result) {
         if (result.success) {
@@ -68,6 +55,64 @@ function checkFlightAvailability(flightNumber, price, bookBtn) {
     .then(onCheckFlightResult(flightNumber, price, bookBtn));
 }
 
+
+function getAirlineName(carrierCode, carriersDictionary) {
+        const commonAirlines = {
+        'AZ': 'Alitalia',
+        'LH': 'Lufthansa',
+        'AF': 'Air France',
+        'BA': 'British Airways',
+        'EK': 'Emirates',
+        'AA': 'American Airlines',
+        'DL': 'Delta Air Lines',
+        'W2': 'FlexFlight',
+        'FR': 'Ryanair',
+        'U2': 'EasyJet'
+    };
+    return commonAirlines[carrierCode];
+}
+
+function formatTimeWithTimezone(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'});
+}
+
+
+function formatDuration(isoDuration) {
+    const hours = isoDuration.match(/(\d+)H/)?.[1] || '0';
+    const minutes = isoDuration.match(/(\d+)M/)?.[1] || '00';
+    return hours + "h " + minutes.padStart(2, '0') + "m";
+}
+
+function formatItinerary(itinerary) {
+    if (!itinerary.segments?.length) return "No segment data";
+
+    const segment = itinerary.segments[0];
+    const lastSegment = itinerary.segments[itinerary.segments.length - 1];
+
+    const departure = segment.departure.iataCode;
+    const departureTime = formatTimeWithTimezone(segment.departure.at);
+
+    const arrival = lastSegment.arrival.iataCode;
+    const arrivalTime = formatTimeWithTimezone(lastSegment.arrival.at);
+
+    const duration = formatDuration(itinerary.duration);
+    return "(" + departure + ") at " + departureTime + "  →  " + duration + "  → (" + arrival + ") at " + arrivalTime;
+}
+
+function createFlightCaption(label, content) {
+    const caption = document.createElement('div');
+    caption.classList.add('flight-caption');
+    caption.textContent = label + ": " + content;
+    return caption;
+}
+
+function handleError(error) {
+    const output = document.getElementById('flight-result');
+    output.textContent = "Errore";
+    console.error('Errore fetch:', error);
+}
+
 function handleResult(flights) {
     const flightResult = document.getElementById('flight-result');
     flightResult.classList.add('show');
@@ -78,28 +123,16 @@ function handleResult(flights) {
         return;
     }
 
-    for (let i = 0; i < flights.length; i++) {
+   for (let i = 0; i < flights.length; i++) {
         const flightDiv = document.createElement('div');
         flightDiv.classList.add('flight');
 
         const flight = flights[i];
-        const segment = flight.itineraries[0].segments[0];
+        const price = flight.price?.total || "Price not available.";
+        const flightNumber = flight.itineraries[0].segments[0].carrierCode + flight.itineraries[0].segments[0].number;
 
-        const departure = segment.departure.iataCode;
-        const departureTime = segment.departure.at;
-        const dTime = departureTime.substring(11, 16);
-
-        const arrival = segment.arrival.iataCode;
-        const arrivalTime = segment.arrival.at;
-        const aTime = arrivalTime.substring(11, 16);
-
-        const flightNumber = segment.carrierCode + segment.number;
-        const price = flight.price.total;
-
-        const stopover = segment.numberOfStops;
-        const stopoverText = stopover === 0 ? "Non-stop" : stopover + " stop(s)";
-
-        const index = i + 1;
+        const carrierCode = flight.itineraries[0].segments[0].carrierCode;
+        const airlineName = getAirlineName(carrierCode, window.dictionaries?.carriers);
 
         const flightContent = document.createElement('div');
         flightContent.classList.add('flight-content');
@@ -107,32 +140,20 @@ function handleResult(flights) {
         const infoDiv = document.createElement('div');
         infoDiv.classList.add('flight-info');
 
-        const captionResult = document.createElement('div');
-        captionResult.classList.add('flight-caption');
-        captionResult.textContent = "Result: " + index;
-        infoDiv.appendChild(captionResult);
+        const outbound = formatItinerary(flight.itineraries[0]);
+        infoDiv.appendChild(createFlightCaption("OB", outbound));
 
-        const captionFrom = document.createElement('div');
-        captionFrom.classList.add('flight-caption');
-        captionFrom.textContent = "From: " + departure + " at: " + dTime + 
-                                  " → To: " + arrival + " at: " + aTime;
-        infoDiv.appendChild(captionFrom);
+        if (flight.itineraries.length > 1) {
+            const inbound = formatItinerary(flight.itineraries[1]);
+            infoDiv.appendChild(createFlightCaption("RT", inbound));
+        }
 
-        const captionPrice = document.createElement('div');
-        captionPrice.classList.add('flight-caption');
-        captionPrice.textContent = "Price: " + price + " €";
-        infoDiv.appendChild(captionPrice);
-
-        const captionFlight = document.createElement('div');
-        captionFlight.classList.add('flight-caption');
-        captionFlight.textContent = "Flight: " + flightNumber;
-        infoDiv.appendChild(captionFlight);
+        infoDiv.appendChild(createFlightCaption("Operated by", airlineName));
+        infoDiv.appendChild(createFlightCaption("Prezzo", price + " €"));
 
         const bookBtn = document.createElement('button');
         bookBtn.classList.add('book-button');
-
-        checkFlightAvailability(flightNumber, price, bookBtn);
-
+        // checkFlightAvailability(flightNumber, price, bookBtn);
         flightContent.appendChild(infoDiv);
         flightContent.appendChild(bookBtn);
         flightDiv.appendChild(flightContent);
@@ -140,12 +161,24 @@ function handleResult(flights) {
     }
 }
 
+
+function handleResponse(response) {
+    if (!response.ok) {
+        throw new Error('Errore nella risposta del server');
+    }
+    return response.json();
+}
+
 function handleFlightSearch(event) {
-    event.preventDefault();    
+    event.preventDefault();        
     const form = document.getElementById('flight-search-form');
     const formData = new FormData(form);
 
-    fetch('getFlight.php', {
+    const meta_element = document.querySelector('meta[name="csrf-token"]');
+    const csrf_token = meta_element.content;
+    formData.append ('_token', csrf_token);
+
+    fetch(BASE_URL + 'search', {
         method: 'POST',
         body: formData
     })
@@ -156,3 +189,5 @@ function handleFlightSearch(event) {
 
 const submitBtn = document.getElementById('submit');
 submitBtn.addEventListener('click', handleFlightSearch);
+
+// Utilizzare fake store api per simulare pagaemnto

@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+  --sabbia: rgba(223, 208, 188, 1);
+  --sabbia-hover: rgba(193, 178, 158, 1);
+  --nero: rgba(60, 59, 58, 1);
+  --marrone: rgba(95, 74, 69, 1);
+  --title-font: "Playfair Display", serif;
+}
+
 body {
     background-color: var(--sabbia);
     display: flex;
@@ -65,7 +75,7 @@ body {
 }
 
 #login-container p {
-    margin-top: 20px;
+    margin-top: 25px;
     font-size: 14px;
     color: #555;
 }
