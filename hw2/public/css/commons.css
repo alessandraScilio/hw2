@@ -43,6 +43,7 @@ body {
 #menu-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 30px;
   flex: 2;
 }
@@ -59,47 +60,55 @@ body {
   color: var(--marrone);
 }
 
-#account-button-container {
+
+#cart-button-container {
   display: flex;
-  justify-content: flex-end;
-  flex: 1;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px; 
+  align-items: center;
 }
 
-.account-button {
-  padding: 10px 24px;
-  background-color: var(--marrone);
-  color: var(--sabbia);
-  text-decoration: none;
-  border-radius: 30px;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.account-button:hover {
-  background-color: var(--nero);
-}
-
-#account-button-container {
-  display: flex;
-  justify-content: flex-end;
-  flex: 1;
-}
-
-.account-button {
-  padding: 10px 24px;
-  background-color: var(--marrone);
-  color: var(--sabbia);
-  text-decoration: none;
-  border-radius: 30px;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
+.cart-button {
   border: none;
+  border-radius: 50%;
+  background-color: whitesmoke;
+  padding: 15px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.cart-button img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.account-button {
+  padding: 10px 24px;
+  color: var(--nero);
+  text-decoration: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
 }
 
 .account-button:hover {
-  background-color: var(--nero);
+  background-color: var(--sabbia);
+  color: var(--nero);
 }
+
+#account-button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+}
+
 
 
 .site-footer {
@@ -120,6 +129,8 @@ body {
   gap: 20px;
   border-bottom: 1px solid var(--marrone);
   padding-bottom: 20px;
+  align-items: center;
+
 }
 
 .footer-left h3 {
@@ -157,3 +168,46 @@ body {
   font-size: 0.9rem;
   opacity: 0.8;
 }
+
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 350px;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease;
+  z-index: 9999;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.cart-sidebar.open {
+  right: 0; 
+}
+
+.cart-sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--sabbia);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.cart-sidebar-header h2 {
+  font-family: var(--title-font);
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--marrone);
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--nero);
+}
+

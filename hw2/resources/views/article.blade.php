@@ -8,7 +8,8 @@
     <script>
     const BASE_URL = "{{ url('/') }}/"
   </script>
-   <script src="articles.js" defer></script> 
+   <script src='{{ url("js/articles.js") }}' defer></script> 
+    <script src='{{ url("js/cart.js") }} ' defer></script> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
   </head>
   
@@ -26,10 +27,24 @@
     </div>
 
     <div id="account-button-container">
+      <div id="cart-button-container">
+      <button class="cart-button">
+        <img id="cart-icon" src="{{ asset('pics/cart.svg') }}">
+      </button>
+  </div>
       <a href="account.php" class="account-button">{{ $username }}'s Account</a>
     </div>
-
   </div>
+
+  <div id="cart-sidebar" class="cart-sidebar">
+  <div class="cart-sidebar-header">
+    <h2>Your cart</h2>
+    <button id="close-cart" class="close-button">&times;</button>
+  </div>
+  <div class="cart-sidebar-content">
+  </div>
+</div>
+
 </nav>
 
 <section class="search-section">
