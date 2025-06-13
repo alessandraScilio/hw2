@@ -204,9 +204,8 @@ submitBtn.addEventListener('click', handleFlightSearch);
 
 // Cart section
 
-
-function startCheckOut() {
-//
+function checkOut() {
+  window.location.href = BASE_URL + 'payment';
 }
 
 function handleOutsideClick(event) {
@@ -308,9 +307,8 @@ function onJson(result) {
 
     const payButton = document.createElement('button');
     payButton.textContent = 'Pay Now';
+    payButton.addEventListener('click', checkOut);
     payButton.classList.add('pay-button');
-    payButton.addEventListener('click', startCheckOut);
-
     cartContent.appendChild(payButton);
 }
 

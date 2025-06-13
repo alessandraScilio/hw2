@@ -11,8 +11,6 @@ use App\Http\Controllers\FlightController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\PaymentController;
 
-
-
 // Homepage
 Route::get('/index', [IndexController::class, 'index'])->name('index');
 
@@ -43,6 +41,12 @@ Route::post('/book_flight', [BookingController::class, 'book_flight']);
 Route::get('/show_bookings',  [BookingController::class, 'show_bookings'] );
 Route::post('/delete_booking', [BookingController::class, 'delete_booking']);
 
+//Payment
+Route::get('/payment', [PaymentController::class, 'payment'])->name('payment');
+Route::get('payment_form', [PaymentController::class, 'payment_form']);
+Route::post('/do_payment', [PaymentController::class, 'do_payment'])->name('do_payment');
+Route::get('thanks', [PaymentController::class, 'thanks'])->name('thanks');
+Route::get('/count', [PaymentController::class, 'count']);
 
 
 // Articles

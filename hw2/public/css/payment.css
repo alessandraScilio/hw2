@@ -7,7 +7,12 @@
       max-width: 400px;
       text-align: center;
       margin: 50px auto;
-      font-family: var(--title-font);
+      font-weight: 100;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .green {
+      color: green;
     }
 
     #payment-container h1 {
@@ -15,9 +20,11 @@
       color: var(--nero);
     }
 
+
     #payment-container label {
       display: block;
       text-align: left;
+      margin-bottom: 10px;
       margin-bottom: 3px;
       font-weight: 600;
       color: var(--nero);
@@ -31,7 +38,6 @@
       padding: 12px;
       margin-bottom: 10px;
       border: 1px solid #ccc;
-      border-radius: 8px;
       box-sizing: border-box;
       transition: border-color 0.3s;
       font-size: 1rem;
@@ -84,4 +90,8 @@
       margin-top: 10px;
       text-align: center;
       font-size: 13px;
+    } 
+
+    #total {
+    font-weight: bold;
     }
