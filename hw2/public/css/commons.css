@@ -110,7 +110,6 @@ body {
 }
 
 
-
 .site-footer {
   background-color: var(--sabbia);
   color: var(--marrone);
@@ -181,6 +180,7 @@ body {
   z-index: 9999;
   padding: 20px;
   box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .cart-sidebar.open {
@@ -210,4 +210,48 @@ body {
   cursor: pointer;
   color: var(--nero);
 }
+
+.booking-item {
+  margin-bottom: 15px;
+}
+
+.booking-item p {
+  margin: 4px 0;
+}
+
+.booking-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.flight-info p {
+  margin: 0;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.total-price {
+  font-weight: bold;
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+
+.pay-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: var(--marrone);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
 

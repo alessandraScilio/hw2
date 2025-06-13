@@ -9,8 +9,8 @@
   <script>
     const BASE_URL = "{{ url('/') }}/"
   </script>
-  <script src='{{ url("js/home.js")}}' defer></script> 
-  <script src='{{ url("js/cart.js")}}' defer></script> 
+  <script src='{{ url("js/home.js") }}' defer></script> 
+  <script src='{{ url("js/cart.js") }}' defer></script> 
 </head>
 <body>
 

@@ -9,8 +9,7 @@
     <script>
     const BASE_URL = "{{ url('/') }}/"
     </script>
-    <script src='{{ url("js/flights.js")}}' defer></script> 
-    <script src='{{ url("js/cart.js")}}' defer></script> 
+    <script src='{{ url("js/flights.js") }}' defer></script> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
   </head>
   

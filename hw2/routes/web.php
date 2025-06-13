@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\FlightController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\PaymentController;
 
 
 
@@ -39,6 +40,8 @@ Route::post('/search', [FlightController::class, 'search']);
 // Bookings
 Route::post('/check_flight', [BookingController::class, 'check_flight']);
 Route::post('/book_flight', [BookingController::class, 'book_flight']);
+Route::get('/show_bookings',  [BookingController::class, 'show_bookings'] );
+Route::post('/delete_booking', [BookingController::class, 'delete_booking']);
 
 
 
