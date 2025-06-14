@@ -190,17 +190,17 @@ function unlikeFunction(articleId, likeImg, likeCount) {
 }
 
 
-
-
-
 function onJSON(json) {
     const container = document.getElementById('articles-container');
     container.innerHTML = '';
 
+     if (!Array.isArray(json)) {
+        console.error("Expected array, got:", json);
+        json = []; 
+    }
+
     if (json.length === 0) {
-        const msg = document.createElement('p');
-        msg.textContent = 'No articles found.';
-        container.appendChild(msg);
+        console.log('<p>No articles found.</p>');
         return;
     }
 
@@ -241,18 +241,6 @@ function onJSON(json) {
 
         actionDiv.appendChild(likeCount);
 
-        const commentImg = document.createElement('img');
-        commentImg.src = 'pics/comment.svg';
-        const commentCount = document.createElement('p');
-        commentCount.classList.add('comment-count');
-        commentCount.textContent = article.comment_count;
-        commentImg.addEventListener('click', function() {
-            readMore(article);
-        });
-
-        actionDiv.appendChild(commentImg);
-        actionDiv.appendChild(commentCount);
-
         const shareImg = document.createElement('img');
         shareImg.src = 'pics/share.svg';
         actionDiv.appendChild(shareImg);
@@ -266,21 +254,27 @@ function onJSON(json) {
             readMoreFunction(articleDiv, article);
         });
         articleDiv.appendChild(readMore);
-
         articleDiv.dataset.id = article.id;
         container.appendChild(articleDiv);
     }
 }
 
-
 function onResponse(response) {
-    return response.json();
+    console.log(response);
+    return response.json().catch(error => {
+        console.error("Failed to parse JSON:", error);
+        return [];
+    });
 }
 
 function searchArticles(event) {
     event.preventDefault(); 
     const formData = new FormData(event.target);
-    fetch('searchArticles.php', {
+    const meta_element = document.querySelector('meta[name="csrf-token"]');
+    const csrf_token = meta_element.content;
+    formData.append ('_token', csrf_token);
+
+    fetch(BASE_URL + 'search', {
         method: 'POST',
         body: formData
     }).then(onResponse)

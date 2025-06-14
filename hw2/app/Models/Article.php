@@ -5,12 +5,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-
-
 class Article extends Model
 {
     public $timestamps = false;
-
     protected $fillable = ['title', 'content', 'image_url', 'continent', 'country', 'city'];
 
     public function likes(): HasMany
@@ -23,6 +20,28 @@ class Article extends Model
         return $this->hasMany(Comment::class);
     }
 
-    
+
+    public function scopeSearchText($query, string $searchTerm)
+    {
+        return $query->where(function($q) use ($searchTerm) {
+            $q->where('continent', 'LIKE', "%$searchTerm%")
+            ->orWhere('country', 'LIKE', "%$searchTerm%")
+            ->orWhere('city', 'LIKE', "%$searchTerm%");
+        });
+    }
+
+    public function scopeWithLikeStatus($query, int $userId)
+    {
+        return $query->withCount(['likes as liked' => function($q) use ($userId) {
+            $q->where('user_id', $userId);
+        }]);
+    }
+
+    public function scopeWithCounts($query)
+    {
+        return $query->withCount(['likes', 'comments']);
+    }
+
+ 
     
 }

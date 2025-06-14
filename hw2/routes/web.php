@@ -51,6 +51,7 @@ Route::get('/count', [PaymentController::class, 'count']);
 
 // Articles
 Route::get('/article', [ArticleController::class, 'article'])->name('article');
+Route::post('/search', [ArticleController::class, 'search']);
 
 
 // Logout : aggiungilo nell'account
