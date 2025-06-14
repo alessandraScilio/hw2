@@ -13,7 +13,6 @@ class BookingController extends BaseController
 {
        public function check_flight(Request $request)
         {
-    
             if(!Session::get('user_id')){
             return response()->json(['error' => 'Unauthorized'], 401);
             }
@@ -28,7 +27,6 @@ class BookingController extends BaseController
 
         return response()->json(['success' => !$alreadyBooked]);
     }
-
 
 
     public function book_flight(Request $request)

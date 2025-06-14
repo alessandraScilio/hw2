@@ -1,13 +1,14 @@
 <htlm>
   <head>
     <title>TravelHub</title>
-    <link rel="stylesheet" href="{{ url('css/index.css') }}">
     <link rel="stylesheet" href="{{ url('css/commons.css') }}">
+        <link rel="stylesheet" href="{{ url('css/index.css') }}">
+    <script src='{{ url("js/index.js") }} ' defer></script> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
   </head>
    
       <body>
-      <nav id="nav-container">
+     <nav id="nav-container">
         <div id="nav-content">
         <a href="home.php" id="site-name">TravelHub</a>
   
@@ -26,18 +27,30 @@
       </div>
     </nav>
 
-   <header id="header-container">
-  <div class="overlay"></div>
-  <div class="header-content">
-    <h1 id="title">TravelHub</h1>
-    <div class="divider-line"></div>
-    <p id="subtitle">Your personal travel center</p>
-    <div class="auth-buttons">
-      <a href="login.php" class="auth-btn">Login</a>
-      <a href="signup.php" class="auth-btn secondary">Sign up</a>
+    <div class="header-slideshow">
+    <div class="slide active" style="background-image: url('pics/desert.jpg');"></div>
+    <div class="slide" style="background-image: url('pics/mountain.webp');"></div>
+    <div class="slide" style="background-image: url('pics/sea.webp');"></div>
+    <div class="slide" style="background-image: url('pics/city.jpg');"></div>
+    
+    <div class="header-content">
+      <h1 id="title">TravelHub</h1>
+      <div class="divider-line"></div>
+      <p id="subtitle">Your personal travel center</p>
+      <div class="auth-buttons">
+        <a href="{{ route('login.form') }}" class="auth-btn">Login</a>
+        <a href="{{ route('signup.form') }}" class="auth-btn secondary">Sign up</a>
+      </div>
     </div>
+    
+    <div class="carousel-controls">
+      <div class="carousel-control prev"></div>
+      <div class="carousel-control next"></div>
+    </div>
+    
+
   </div>
-</header>
+
 
 <section class="services-section">
   <div class="services-container">
@@ -72,7 +85,7 @@
           <h2>Discover Our Travel Articles</h2>
         <p>Authentic stories, unforgettable destinations, and exclusive tips await you.</br>
         Log in to your account to access reserved content and get inspired for your next adventure.</p>
-        <a href="login.php" class="cta-button">Log in to read</a>
+        <a href="{{ route('login.form') }}"  class="cta-button">Log in to read</a>
         </div>
       </div>
   </section>

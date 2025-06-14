@@ -20,10 +20,10 @@
  <a href="{{ url('home') }}" id="site-name">TravelHub</a>
 
   <div id="menu-container">
-      <a class="menu-item" href="{{ route('article') }}">Articles</a>
       <a class="menu-item" href="{{ route('flight') }}">Flights</a>
+      <a class="menu-item" href="{{ route('article') }}">Articles</a>
       <a class="menu-item" href="#">Hotels</a>
-      <a class="menu-item" href="#">Account</a>
+      <a class="menu-item" href="#">Channels</a>
     </div>
 
     <div id="account-button-container">       
@@ -103,9 +103,9 @@
       <p>Your gateway to unforgettable journeys. Discover, plan, and share travel experiences.</p>
     </div>
     <div class="footer-links">
-      <a href="#">Home</a>
-      <a href="#">Articles</a>
-      <a href="#">Flights</a>
+      <a href="{{ route('home') }}">Home</a>
+      <a href="{{ route('article') }}">Articles</a>
+      <a href="{{ route('flight') }}">Flights</a>
       <a href="#">Hotels</a>
       <a href="#">Account</a>
     </div>

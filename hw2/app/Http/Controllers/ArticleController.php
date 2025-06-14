@@ -19,7 +19,6 @@ class ArticleController extends BaseController
         }    
 
         $user = User::find(Session::get('user_id'));
-
         return view('article')->with('username', $user->username);
     }
 
