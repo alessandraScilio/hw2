@@ -3,21 +3,22 @@ function createArticleCard(post) {
     articleCard.classList.add('article-card');
 
     const postImg = document.createElement('img');
-    postImg.src = post.image_url && post.image_url.trim() !== '' ? post.image_url : 'pics/default.jpg';
+    postImg.src = post.image_url;
     postImg.alt = post.title;
     articleCard.appendChild(postImg);
 
     const postTitle = document.createElement('h3');
-    postTitle.textContent = post.title;
+    postTitle.textContent = post.title.length > 20 ? post.title.substring(0, 20) + '...' : post.title;
     articleCard.appendChild(postTitle);
 
     const postContent = document.createElement('p');
-    postContent.textContent = post.content.length > 150 ? post.content.substring(0, 100) + '...' : post.content;
+    postContent.textContent = post.content.length > 90 ? post.content.substring(0, 90) + '...' : post.content;
     articleCard.appendChild(postContent);
 
     const articleId = post.id;
     const link = document.createElement('a');
     link.href = BASE_URL + 'article/' + articleId;
+    link.classList.add('read-more');
     link.textContent = 'Read more';
     articleCard.appendChild(link);
 

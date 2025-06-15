@@ -19,9 +19,9 @@
     
  <a href="{{ url('home') }}" id="site-name">TravelHub</a>
 
-   <div id="menu-container">
-      <a class="menu-item" href="{{ route('article') }}">Articles</a>
+  <div id="menu-container">
       <a class="menu-item" href="{{ route('flight') }}">Flights</a>
+      <a class="menu-item" href="{{ route('article') }}">Articles</a>
       <a class="menu-item" href="#">Hotels</a>
       <a class="menu-item" href="#">Channels</a>
     </div>
@@ -32,7 +32,7 @@
         <img id="cart-icon" src="{{ asset('pics/cart.svg') }}">
       </button>
   </div>
-      <a href="account.php" class="account-button">{{ $username }}'s Account</a>
+      <a href="{{ route('account') }}" class="account-button">{{ $username }}'s Account</a>
     </div>
   </div>
 

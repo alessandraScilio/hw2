@@ -19,24 +19,24 @@
     
  <a href="{{ url('home') }}" id="site-name">TravelHub</a>
 
-   <div id="menu-container">
-      <a class="menu-item" href="{{ route('article') }}">Articles</a>
+  <div id="menu-container">
       <a class="menu-item" href="{{ route('flight') }}">Flights</a>
+      <a class="menu-item" href="{{ route('article') }}">Articles</a>
       <a class="menu-item" href="#">Hotels</a>
       <a class="menu-item" href="#">Channels</a>
     </div>
-
-    <div id="account-button-container">
+    
+    <div id="account-button-container">       
       <div id="cart-button-container">
       <button class="cart-button">
         <img id="cart-icon" src="{{ asset('pics/cart.svg') }}">
       </button>
   </div>
-      <a href="account.php" class="account-button">{{ $username }}'s Account</a>
-    </div>
-  </div>
+    <a  href="{{ route('account') }}" class="account-button">{{ $username }}'s Account</a>     
+    </div>  
+  </div>  
 
-  <div id="cart-sidebar" class="cart-sidebar">
+<div id="cart-sidebar" class="cart-sidebar">
   <div class="cart-sidebar-header">
     <h2>Your cart</h2>
     <button id="close-cart" class="close-button">&times;</button>
@@ -46,6 +46,7 @@
 </div>
 
 </nav>
+
 
 <section class="search-section">
   <h2>Find Travel Articles</h2>

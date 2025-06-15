@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Model
 {
     public $timestamps = false;
+    protected $fillable = ['username', 'email', 'password'];
 
     public function likes(): HasMany
     {

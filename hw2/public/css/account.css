@@ -49,12 +49,12 @@
   justify-content: flex-start;
   padding: 60px 20px;
   max-width: 100vw;
-  background-color: var(--sabbia);
   font-family: var(--title-font);
   text-align: center;
 }
 
  .liked-posts-section h2{
+  text-decoration: none  !important;
   font-size: 2rem;
   color: var(--marrone);
   margin-bottom: 40px;
@@ -63,12 +63,6 @@
 
 .liked-post-title {
   color: var(--nero);
-}
-
-.no-liked-msg {
-  font-style: italic;
-  color: var(--nero);
-  margin-top: 20px;
 }
 
 #liked-posts-container {
@@ -96,57 +90,4 @@
 .error {
     color: #d32f2f;
     font-weight: bold;
-}
-
-.bookings-section {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-#bookings-container {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 600px;
-  margin: 10px auto;
-  box-shadow: 0 4px 8px rgba(60, 59, 58, 0.2);
-  font-family: Arial, sans-serif;
-  color: var(--nero);
-  margin-bottom: 20px;
-}
-
-.bookings-section h2 {
-  font-size: 2rem;
-  color: var(--marrone);
-  padding-top: 20px;
-  margin-bottom: 40px;
-  text-decoration: underline;
-}
-
-.booked-flight {
-  background-color: var(--sabbia);
-  color: whitesmoke;
-  padding: 12px 15px;
-  margin-bottom: 12px;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: default;
-  transition: background-color 0.3s ease;
-}
-
-.booked-flight:hover {
-  background-color: var(--sabbia-hover);
-  color: var(--marrone);
-}
-
-.total-price {
-  margin: 25px 0;
-  font-family: var(--title-font);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--marrone);
-  text-align: right;
 }

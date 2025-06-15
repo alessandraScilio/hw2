@@ -183,3 +183,12 @@
   line-height: 1.6;
 }
 
+.read-more {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--marrone);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+

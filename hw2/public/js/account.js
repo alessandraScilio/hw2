@@ -1,84 +1,56 @@
-function onPostsJson(posts) {
+
+function onError(error) {
+     console.error('Error:', error);
     const container = document.getElementById('liked-posts-container');
-    
+    if (container) {
+        container.innerHTML = `<p class="error">Error: ${error.message}</p>`;
+    }
+}
+
+function onJson(favourites) {
+    const container = document.getElementById('liked-posts-container');
     if (!container) return;
 
-     for (let i = 0; i < posts.length; i++) {
-        const post = posts[i];
+    container.innerHTML = ''; 
+
+    for (let i = 0; i < favourites.length; i++) {
+        const favourite = favourites[i];
 
         const postElement = document.createElement('div');
         postElement.className = 'liked-post';
 
         const postImg = document.createElement('img');
-        postImg.src = post.image_url || 'default.jpg';
+        postImg.src = favourite.image_url || 'pics/default_img.jpeg';
+        postImg.alt = favourite.title || 'Article image';
         postElement.appendChild(postImg);
 
-        const postTitle = document.createElement('h3');
-        postTitle.textContent = post.title;
-        postTitle.className = 'liked-post-title';
-        postElement.appendChild(postTitle);
+        const postLink = document.createElement('a');
+        postLink.href = BASE_URL + 'article/' + favourite.id;
+        postLink.className = 'liked-post-title';
 
+        const postTitle = document.createElement('h3');
+        postTitle.textContent = favourite.title;
+        postLink.appendChild(postTitle);
+
+        postElement.appendChild(postLink);
         container.appendChild(postElement);
     }
-
-}
-
-function onBookingsJson(bookings) {
-    const bookingsContainer = document.getElementById('bookings-container');
-    if (!bookingsContainer) return;
-
-    let totalPrice = 0;
-
-   for (let i = 0; i < bookings.length; i++) {
-        const booking = bookings[i];
-
-        const bookedFlight = document.createElement('div');
-        bookedFlight.classList.add('booked-flight');
-        bookedFlight.textContent = `Flight ID: ${booking.flight_id} - Price: ${booking.price}`;
-        bookingsContainer.appendChild(bookedFlight);
-
-        totalPrice += parseFloat(booking.price);
-    }
-
-    const totalDiv = document.createElement('div');
-    totalDiv.classList.add('total-price');
-    totalDiv.textContent = 'Total price: ' + totalPrice.toFixed(2) + ' €';
-    bookingsContainer.appendChild(totalDiv);
-
-    const payBtn = document.createElement('button');
-    payBtn.classList.add('account-button');
-    payBtn.textContent = 'Pay now';
-    bookingsContainer.appendChild(payBtn);
-}
-
-function onError(error) {
-    console.error('Error:', error);
-    const containers = [
-        document.getElementById('liked-posts-container'),
-        document.getElementById('bookings-container')
-    ];
-     for (let i = 0; i < containers.length; i++) {
-        const container = containers[i];
-        if (container) {
-            container.innerHTML = `<p class="error">Error: ${error.message}</p>`;
-        }
-}
 }
 
 function onResponse(response) {
     return response.json();
 }
 
-
 function getData() {
-    fetch('getPosts.php')
-        .then(onResponse)
-        .then(onPostsJson)
-        .catch(onError);
+    const formData = new FormData();
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+    formData.append('_token', csrfToken);
 
-    fetch('getBookings.php')
-        .then(onResponse)
-        .then(onBookingsJson)
+    fetch(BASE_URL + 'favs', {
+        method: 'POST',
+        body: formData
+        }).then(onResponse)
+        .then(onJson)
         .catch(onError);
 }
 
