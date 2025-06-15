@@ -48,7 +48,7 @@ function searchArticles(event) {
     const csrf_token = meta_element.content;
     formData.append ('_token', csrf_token);
 
-    fetch(BASE_URL + 'search', {
+    fetch(BASE_URL + 'search_article', {
         method: 'POST',
         body: formData
     }).then(onResponse)

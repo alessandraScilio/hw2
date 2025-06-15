@@ -27,11 +27,6 @@
     </div>
     
     <div id="account-button-container">       
-      <div id="cart-button-container">
-      <button class="cart-button">
-        <img id="cart-icon" src="{{ asset('pics/cart.svg') }}">
-      </button>
-  </div>
     <a  href="{{ route('account') }}" class="account-button">{{ $username }}'s Account</a>     
     </div>  
   </div>  

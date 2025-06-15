@@ -29,11 +29,6 @@
     </div>
 
     <div id="account-button-container">
-      <div id="cart-button-container">
-      <button class="cart-button">
-        <img id="cart-icon" src="{{ asset('pics/cart.svg') }}">
-      </button>
-  </div>
     <a href="{{ route('logout') }}" class="account-button">Logout</a>
     </div>
   </div>
@@ -58,8 +53,11 @@
 
     <div class="account-section">
       <h2>Settings</h2>
-        <button class="account-button" type='change-username' >Change username</button>
-        <button class="account-button" type='change-password' >Change password</button>
+        <button class="account-button" type='change-password'>
+          <a href = "{{ route('reset.form') }}" class="account-button">Change password</a>
+        </button>
+
+
     </div>
     </div>
 
@@ -87,7 +85,5 @@
     &copy; 2025 TravelHub. All rights reserved.
   </div>
 </footer>
-
-
 </body>
 </html>

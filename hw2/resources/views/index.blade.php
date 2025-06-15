@@ -20,7 +20,6 @@
         </div>
 
         <div id="auth-buttons">
-
         <a class="auth-button" href="{{ route('login.form') }}">Login</a>
         <a class="auth-button signup" href="{{ route('signup.form') }}">Sign Up</a>
         </div>

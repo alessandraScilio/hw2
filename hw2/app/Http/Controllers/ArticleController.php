@@ -22,7 +22,7 @@ class ArticleController extends BaseController
         return view('article')->with('username', $user->username);
     }
 
-    public function search(Request $request)
+    public function search_article(Request $request)
     {
         if (!Session::get('user_id')) {
             return response()->json(['error' => 'Unauthorized'], 401);

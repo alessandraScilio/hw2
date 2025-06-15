@@ -41,7 +41,7 @@ Route::get('thanks', [PaymentController::class, 'thanks'])->name('thanks');
 Route::get('/count', [PaymentController::class, 'count']);
 
 Route::get('/article', [ArticleController::class, 'article'])->name('article');
-Route::post('/search', [ArticleController::class, 'search']);
+Route::post('/search_article', [ArticleController::class, 'search_article']);
 Route::get('/article/{id}', [ArticleController::class, 'show']);
 Route::post('/status', [ArticleController::class, 'status']);
 Route::post('/like', [ArticleController::class, 'like']);

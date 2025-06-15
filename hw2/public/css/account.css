@@ -45,49 +45,89 @@
 }
 
 .liked-posts-section {
-  display: grid;
-  justify-content: flex-start;
   padding: 60px 20px;
-  max-width: 100vw;
+  max-width: 1400px;
+  margin: 0 auto;
   font-family: var(--title-font);
   text-align: center;
 }
 
- .liked-posts-section h2{
-  text-decoration: none  !important;
+.liked-posts-section h2 {
   font-size: 2rem;
   color: var(--marrone);
   margin-bottom: 40px;
-  text-decoration: underline;
+}
+
+#liked-posts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+}
+
+.liked-post {
+  background: white;
+  padding: 12px; 
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.3s ease;
+  max-height: 280px;
+}
+
+.liked-post img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 8px;
 }
 
 .liked-post-title {
   color: var(--nero);
+  text-decoration: none;
+  font-family: var(--title-font);
+  font-size: 1rem;
+  margin-top: auto;
+  padding: 4px 0;
 }
 
-#liked-posts-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+.liked-post:hover {
+  transform: translateY(-5px);
 }
 
 
-.liked-post {
-    background: white;
-    padding: 15px;
-    margin: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    max-width: 300px;
-}
-
-.liked-post img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 4px;
+.liked-post-title h3 {
+  margin: 0;
+  padding: 0;
 }
 
 .error {
-    color: #d32f2f;
-    font-weight: bold;
+  color: #d32f2f;
+  font-weight: bold;
+  grid-column: 1 / -1;
 }
+
+@media (max-width: 1200px) {
+  #liked-posts-container {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  #liked-posts-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  #liked-posts-container {
+    grid-template-columns: 1fr;
+  }
+}
+
