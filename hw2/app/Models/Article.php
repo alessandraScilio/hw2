@@ -20,7 +20,6 @@ class Article extends Model
         return $this->hasMany(Comment::class);
     }
 
-
     public function scopeSearchText($query, string $searchTerm)
     {
         return $query->where(function($q) use ($searchTerm) {
@@ -30,18 +29,4 @@ class Article extends Model
         });
     }
 
-    public function scopeWithLikeStatus($query, int $userId)
-    {
-        return $query->withCount(['likes as liked' => function($q) use ($userId) {
-            $q->where('user_id', $userId);
-        }]);
-    }
-
-    public function scopeWithCounts($query)
-    {
-        return $query->withCount(['likes', 'comments']);
-    }
-
- 
-    
 }

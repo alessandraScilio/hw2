@@ -1,0 +1,44 @@
+
+.article-detail {
+  max-width: 800px;
+  margin: 3rem auto;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(60, 59, 58, 0.15);
+}
+
+.article-detail img.article-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.article-detail h2 {
+  font-family: var(--title-font);
+  font-size: 2rem;
+  color: var(--marrone);
+  margin-bottom: 1rem;
+}
+
+.article-detail p {
+  font-size: 1.1rem;
+  color: var(--nero);
+}
+
+.article-detail .like-button {
+  display: inline-block;
+  background-color: var(--sabbia);
+  color: var(--marrone);
+  text-decoration: none;
+  padding: 7px 15px;
+  font-size: 1rem;
+  border-radius: 50px;
+  margin-top: 20px;
+  border-color: var(--marrone);
+}
+
+.article-detail .like-button:hover {
+  background-color: var(--sabbia-hover);
+}

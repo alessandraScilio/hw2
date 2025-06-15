@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Like extends Model
 {
+    public $timestamps = false;
     protected $fillable = ['user_id', 'article_id'];
 
     public function user(): BelongsTo
