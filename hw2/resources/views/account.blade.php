@@ -16,20 +16,23 @@
 <body>
 
  <body>
-    <nav id="nav-container">
-    <div id="nav-content">
-    
- <a href="{{ url('home') }}" id="site-name">TravelHub</a>
+  <nav id="nav-container">
+  <div id="nav-content">
+  
+  <button class="hamburger">
+   <img id="curtain-menu-image" src="{{ asset('pics/hamburger.svg') }}">
+   </button>
+    <a href="{{ url('home') }}" id="site-name">TravelHub</a>
 
- <div id="menu-container">
+    <div id="menu-container">
       <a class="menu-item" href="{{ route('flight') }}">Flights</a>
       <a class="menu-item" href="{{ route('article') }}">Articles</a>
       <a class="menu-item" href="#">Hotels</a>
-      <a class="menu-item" href="#">Channels</a>
+      <a class="menu-item" href="{{ route('account') }}">Account</a>
     </div>
 
     <div id="account-button-container">
-    <a href="{{ route('logout') }}" class="account-button">Logout</a>
+      <a href="{{ route('account') }}" class="account-button">{{ $username }}'s Account</a>
     </div>
   </div>
 
@@ -42,7 +45,8 @@
   </div>
 </div>
 </nav>
-
+<div id="menu-overlay" class="hidden"></div>
+  
   <div class="account-container">
     <h1>{{ $username }}'s Account</h1>
     <div class="account-section">

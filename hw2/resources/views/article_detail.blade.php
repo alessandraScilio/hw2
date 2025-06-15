@@ -14,20 +14,22 @@
   </head>
   
   <body>
-    <nav id="nav-container">
-    <div id="nav-content">
-    
- <a href="{{ url('home') }}" id="site-name">TravelHub</a>
+  <nav id="nav-container">
+  <div id="nav-content">
+  
+  <button class="hamburger">
+   <img id="curtain-menu-image" src="{{ asset('pics/hamburger.svg') }}">
+   </button>
+    <a href="{{ url('home') }}" id="site-name">TravelHub</a>
 
-  <div id="menu-container">
+    <div id="menu-container">
       <a class="menu-item" href="{{ route('flight') }}">Flights</a>
       <a class="menu-item" href="{{ route('article') }}">Articles</a>
       <a class="menu-item" href="#">Hotels</a>
-      <a class="menu-item" href="#">Channels</a>
+      <a class="menu-item" href="{{ route('account') }}">Account</a>
     </div>
 
     <div id="account-button-container">
-  </div>
       <a href="{{ route('account') }}" class="account-button">{{ $username }}'s Account</a>
     </div>
   </div>
@@ -40,9 +42,9 @@
   <div class="cart-sidebar-content">
   </div>
 </div>
-
 </nav>
-
+<div id="menu-overlay" class="hidden"></div>
+  
       <div class="article-detail">
         <h2>{{ $article->title }}</h2>
               <img src="{{ url($article->image_url) }}"  alt="Article image" class="article-img">

@@ -14,29 +14,32 @@
   </head>
   
   <body>
-    <nav id="nav-container">
-    <div id="nav-content">
-    
- <a href="{{ url('home') }}" id="site-name">TravelHub</a>
+  
+  <nav id="nav-container">
+  <div id="nav-content">
+  
+  <button class="hamburger">
+   <img id="curtain-menu-image" src="{{ asset('pics/hamburger.svg') }}">
+   </button>
+    <a href="{{ url('home') }}" id="site-name">TravelHub</a>
 
- <div id="menu-container">
+    <div id="menu-container">
       <a class="menu-item" href="{{ route('flight') }}">Flights</a>
       <a class="menu-item" href="{{ route('article') }}">Articles</a>
       <a class="menu-item" href="#">Hotels</a>
-      <a class="menu-item" href="#">Channels</a>
+      <a class="menu-item" href="{{ route('account') }}">Account</a>
     </div>
 
-    <div id="account-button-container">       
-      <div id="cart-button-container">
+      
+    <div id="account-button-container">
       <button class="cart-button">
         <img id="cart-icon" src="{{ asset('pics/cart.svg') }}">
       </button>
+      <a href="{{ route('account') }}" class="account-button">{{ $username }}'s Account</a>
+    </div>
   </div>
-    <a  href="{{ route('account') }}" class="account-button">{{ $username }}'s Account</a>     
-    </div>  
-  </div>  
 
-<div id="cart-sidebar" class="cart-sidebar">
+  <div id="cart-sidebar" class="cart-sidebar">
   <div class="cart-sidebar-header">
     <h2>Your cart</h2>
     <button id="close-cart" class="close-button">&times;</button>
@@ -44,9 +47,9 @@
   <div class="cart-sidebar-content">
   </div>
 </div>
-
 </nav>
-
+<div id="menu-overlay" class="hidden"></div>
+  
  <section id="flight-section">
     <h1 class="title">Flight Offers</h1>
       

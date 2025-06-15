@@ -202,7 +202,6 @@ function handleFlightSearch(event) {
 const submitBtn = document.getElementById('submit');
 submitBtn.addEventListener('click', handleFlightSearch);
 
-// Cart section
 
 function checkOut() {
   window.location.href = BASE_URL + 'payment';
@@ -250,6 +249,22 @@ function removeBooking(flightId) {
     .then(onRemoveResponse)
     .then(refreshCart);
 }
+
+function openCart() {
+  const cartSidebar = document.getElementById('cart-sidebar');
+  cartSidebar.classList.add('open');
+  document.body.addEventListener('click', handleOutsideClick);
+  document.body.style.overflow = 'hidden';
+  fetch(BASE_URL + 'show_bookings').then(onResponse).then(onJson);
+
+}
+
+function closeCart() {
+  const cartSidebar = document.getElementById('cart-sidebar');
+  cartSidebar.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
 
 function onJson(result) {
     const cartContent = document.querySelector('.cart-sidebar-content');
@@ -300,6 +315,9 @@ function onJson(result) {
         cartContent.appendChild(separator);
     }
 
+    const closeButton = document.querySelector('#close-cart');
+    closeButton.addEventListener('click', closeCart);
+
     const totalElement = document.createElement('p');
     totalElement.classList.add('total-price');
     totalElement.textContent = 'Total: €' + total.toFixed(2);
@@ -321,21 +339,6 @@ function onResponse(response) {
 }
 
 
-function openCart() {
-  const cartSidebar = document.getElementById('cart-sidebar');
-  cartSidebar.classList.add('open');
-  document.body.addEventListener('click', handleOutsideClick);
-  document.body.style.overflow = 'hidden';
-  fetch(BASE_URL + 'show_bookings').then(onResponse).then(onJson);
-
-}
-
-function closeCart() {
-  const cartSidebar = document.getElementById('cart-sidebar');
-  cartSidebar.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
 function handleCartToggle(event) {
   event.preventDefault();
 
@@ -350,8 +353,42 @@ function handleCartToggle(event) {
 }
 
 
-const cartButton = document.querySelector('.cart-button');
+
+function toggleMobileMenu() {
+  const menuContainer = document.getElementById('menu-container');
+  const body = document.body;
+  const hamburger = document.querySelector('.hamburger');
+  const navContainer = document.getElementById('nav-container');
+  const overlay = document.getElementById('menu-overlay');
+
+  const isMenuOpen = menuContainer.classList.toggle('show');
+
+  body.classList.toggle('no-scroll', isMenuOpen);
+  overlay.classList.toggle('show', isMenuOpen);
+  menuContainer.classList.toggle('hidden', !isMenuOpen);
+
+  if (isMenuOpen) {
+    hamburger.innerHTML = '<img src="' + BASE_URL + 'pics/cross.svg" alt="Close menu">';
+    navContainer.classList.add('nav-expanded');
+  } else {
+    hamburger.innerHTML = '<img src="' + BASE_URL + 'pics/hamburger.svg">';
+    navContainer.classList.remove('nav-expanded');
+  }
+}
+
+function onDomLoaded() {
+  const hamburger = document.querySelector('.hamburger');
+  if (hamburger) {
+    hamburger.addEventListener('click', toggleMobileMenu);
+  }
+
+  const cartButton = document.querySelector('.cart-button');
 if (cartButton) {
   cartButton.addEventListener('click', handleCartToggle);
 }
+
+}
+
+
+document.addEventListener('DOMContentLoaded', onDomLoaded);
 
