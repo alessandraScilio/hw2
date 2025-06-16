@@ -89,7 +89,6 @@ function formatTimeWithTimezone(dateString) {
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'});
 }
 
-
 function formatDuration(isoDuration) {
     const hours = isoDuration.match(/(\d+)H/)?.[1] || '0';
     const minutes = isoDuration.match(/(\d+)M/)?.[1] || '00';
@@ -378,15 +377,14 @@ function toggleMobileMenu() {
 
 function onDomLoaded() {
   const hamburger = document.querySelector('.hamburger');
-  if (hamburger) {
-    hamburger.addEventListener('click', toggleMobileMenu);
-  }
+    if (hamburger) {
+        hamburger.addEventListener('click', toggleMobileMenu);
+    }
 
   const cartButton = document.querySelector('.cart-button');
-if (cartButton) {
-  cartButton.addEventListener('click', handleCartToggle);
-}
-
+    if (cartButton) {
+    cartButton.addEventListener('click', handleCartToggle);
+    }
 }
 
 

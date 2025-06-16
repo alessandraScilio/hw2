@@ -47,8 +47,6 @@ class PaymentController extends BaseController
         }
 
         $amount = (int) Booking::where('user_id', $user_id)->sum('price') * 100;
-        Log::info("Calcolato amount: $amount");
-
 
         if ($amount <= 0) {
             return response()->json(['success' => false, 'message' => 'Importo non valido'], 400);

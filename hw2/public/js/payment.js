@@ -2,7 +2,6 @@ function handleError(error) {
     console.error('Errore fetch:', error);
 }
 
-
 function handleResult(responseData) {
 
     const message = document.getElementsByClassName("error-message");
