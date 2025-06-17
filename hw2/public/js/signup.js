@@ -35,8 +35,10 @@ function validateCheckbox() {
     errorElement.classList.remove('ok');
     errorElement.textContent = "Accept privacy policy";
     errorElement.classList.add('show');
+    formStatus.checkbox = false;
     return false;
   } else {
+    formStatus.checkbox = true;
     return true;
   }
 }
@@ -51,11 +53,13 @@ function validateConfirmPassword() {
     errorElement.classList.remove('ok');
     errorElement.textContent = "Different passwords";
     errorElement.classList.add('show');
+    formStatus.confirm = false;
     return false;
   } else {
     errorElement.classList.remove('show');
     errorElement.textContent = "Same passwords";
     errorElement.classList.add('ok');
+    formStatus.confirm = true;
     return true;
   }
 }
@@ -72,12 +76,15 @@ function validatePassword() {
     errorElement.classList.remove('ok');
     errorElement.textContent = "Min. 8 chars, 1 upper, 1 special";
     errorElement.classList.add('show');
+    formStatus.password = false;
+
     return false;
   } else {
     errorElement.textContent ="";
     errorElement.classList.remove('show');
     errorElement.textContent = "Valid password";
     errorElement.classList.add('ok');
+    formStatus.password = true;
     return true;
   }
 }
@@ -113,12 +120,16 @@ function onEmailJson(json) {
     errorElement.classList.remove('ok');
     errorElement.classList.add('show');
     errorElement.textContent = "Email exists already";
+    formStatus.email = false;
+    return false;
     }
     else {
     errorElement.textContent ="";
     errorElement.classList.remove('show');
     errorElement.classList.add('ok');
     errorElement.textContent = "Valid email";
+    formStatus.email = true;
+    return true;
     }
 
 }
@@ -148,12 +159,16 @@ function onUsernameJson(json) {
     errorElement.classList.remove('ok');
     errorElement.classList.add('show');
     errorElement.textContent = "Username exists already";
+    formStatus.username = false;
+    return false;
     }
     else {
     errorElement.textContent ="";
     errorElement.classList.remove('show');
     errorElement.classList.add('ok');
     errorElement.textContent = "Valid username";
+    formStatus.username = true;
+    return true;
     }
 }
 
@@ -185,21 +200,26 @@ function fetchResponse(response) {
 }
 
 function checkSignup(event) {
-  const validUsername = document.querySelector('#username-error').textContent === "";
-  const validEmail = validateEmailSync() && document.querySelector('#email-error').textContent === "";
-  const validPassword = validatePassword();
-  const validConfirm = validateConfirmPassword();
-  const validCheckbox = validateCheckbox();
+  validatePassword();
+  validateConfirmPassword();
+  validateCheckbox();
 
-  const errorElements = document.querySelectorAll('#error-msg');
-
-  if (!(validUsername && validEmail && validPassword && validConfirm && validCheckbox)) {
-    errorElement.textContent ="";
-    errorElement.classList.add('show');
+  if (!formStatus.username || !formStatus.email || !formStatus.password || !formStatus.confirm || !formStatus.checkbox) {
+    const errorElement = document.getElementById('error-message');
     errorElement.textContent = "Please fix the errors above.";
+    errorElement.classList.add('show');
     event.preventDefault();
   }
 }
+
+
+var formStatus = {
+  username: false,
+  email: false,
+  password: false,
+  confirm: false,
+  checkbox: false
+};
 
 function onDomContentLoaded() {
   document.querySelector('#allow').addEventListener('change', validateCheckbox);

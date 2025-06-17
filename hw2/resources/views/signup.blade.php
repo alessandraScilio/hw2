@@ -61,8 +61,9 @@
 
       <input type="submit" value="Sign Up">
     </form>
-    <div id="error-msg"></div>
 
+
+    <div id="error-message"></div>
     @if($error == 'empty_fields') 
     <section class = 'error-message'>Fill out form.</section>
     @elseif($error == 'bad_passwords')

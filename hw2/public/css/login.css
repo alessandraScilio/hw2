@@ -98,3 +98,41 @@ body {
   font-size: 13px;
 }
 
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper button {
+  position: absolute;
+  right: 10px;
+  top: 35%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+
+.password-wrapper button:hover img {
+  cursor: pointer;
+}
+.show {
+  display: block;
+  color: red;
+  text-align: left;
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+
+.ok {
+  display: block;
+  color: green;
+  text-align: left;
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}

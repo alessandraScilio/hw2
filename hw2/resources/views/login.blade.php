@@ -1,9 +1,15 @@
 <html>
 <head>
-    <title>TravelHub</title>
-    <link rel="stylesheet" href="{{ url('css/login.css') }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
-    </head>
+  <title>Sign Up - TravelHub</title>
+  <link rel="stylesheet" href="{{ url('css/login.css') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+   <script>
+    const BASE_URL = "{{ url('/') }}/"
+  </script>
+  <script src='{{ url("js/login.js") }}' defer></script> 
+  <meta charset="utf-8">
+</head>
 <body>
 
     <div id="login-container">
@@ -11,14 +17,21 @@
         <form id = "form" method="post">
         
         @csrf
-        <div class="username">
-            <label for="username">Email:</label><br>
-            <input type="text" id="username" name="email" value = '{{ old("username")}}'><br>
+        <div class="email">
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email" value = '{{ old("username")}}'><br>
+            <div id="email-error"></div>
         </div>
 
         <div class="password">
             <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password"><br><br>
+            <div class="password-wrapper">
+                <input type="password" id="password" name="password" required>
+                <button type="button" id="toggle-password" aria-label="Show password">
+                <img src="{{ asset('pics/open-eye.svg') }}" alt="Show password" width="24" height="24">
+                </button>
+            </div>
+            <div id="password-error"></div>
         </div>
 
          <div class="submit-container">

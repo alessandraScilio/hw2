@@ -32,7 +32,7 @@
     </div>
 
     <div id="account-button-container">
-      <a href="{{ route('account') }}" class="account-button">{{ $username }}'s Account</a>
+      <a href="{{ route('logout') }}" class="account-button">Logout</a>
     </div>
   </div>
 

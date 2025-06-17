@@ -30,7 +30,7 @@ body {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   width: 90%;
   max-width: 420px;
-  text-align: center;
+  text-align: start;
   box-sizing: border-box;
   margin: 20px;
   font-family: var(--title-font), sans-serif;
@@ -79,7 +79,7 @@ input:focus {
   font-size: 13px;
   color: var(--nero);
   border-radius: 8px;
-  text-align: left;
+  text-align: start;
   line-height: 1.6;
 }
 
