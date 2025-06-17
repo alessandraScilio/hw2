@@ -14,7 +14,7 @@
 
     <div id="login-container">
         <h1>Welcome to Travel Hub</h1>
-        <form id = "form" method="post">
+        <form id = "signup-form" method="post">
         
         @csrf
         <div class="email">

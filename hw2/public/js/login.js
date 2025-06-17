@@ -1,3 +1,7 @@
+var formStatus = {
+  email: false
+};
+
 function togglePassword(event) {
   var toggleBtn = event.currentTarget;
   var inputId = toggleBtn.getAttribute('data-input');
@@ -31,12 +35,14 @@ function onEmailJson(json) {
     errorElement.classList.remove('show');
     errorElement.classList.add('ok');
     errorElement.textContent = "Valid email";
+    formStatus.email = true;
     }
     else {
     errorElement.textContent ="";
     errorElement.classList.remove('ok');
     errorElement.classList.add('show');
     errorElement.textContent = "Invalid email";
+    formStatus.email = false;
     }
 
 }
@@ -64,8 +70,18 @@ function checkEmail(event) {
 }
 
 
+function checkSignup(event) {
+  if (!formStatus.email) {
+    const errorElement = document.getElementById('error-message');
+    errorElement.classList.add('show');
+    errorElement.textContent = "Please enter a valid email address.";
+    event.preventDefault();
+  }
+}
+
 function onDomContentLoaded(){
     document.querySelector('#email').addEventListener('blur', checkEmail);
+    document.querySelector('#signup-form').addEventListener('submit', checkSignup);
     setupToggle();
 }
 

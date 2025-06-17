@@ -59,7 +59,7 @@
             </div>
       <div id="allow-error"></div>
 
-      <input type="submit" value="Sign Up">
+      <input type="submit" id="submit" value="Sign Up">
     </form>
 
 

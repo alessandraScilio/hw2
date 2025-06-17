@@ -14,7 +14,7 @@
 
     <div id="login-container">
         <h1>Travel Hub: Reset page</h1>
-        <form id = "signup-form" method="post">
+        <form id ="signup-form" method="post">
         
         @csrf
         <div class="email">
@@ -51,9 +51,7 @@
                         <input type='submit' value="Reset and Login">
                     </div>
                 </div>    
-
         </form> 
-
         @if($error == 'empty_fields')
         <section class = 'error-message'>Empty fields.</section>
         @elseif($error == 'bad_passwords')

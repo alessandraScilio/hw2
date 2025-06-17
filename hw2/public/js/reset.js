@@ -15,21 +15,6 @@ function togglePassword(event) {
 }
 
 
-function checkSignup(event) {
-  const validEmail =  onEmailJson;
-  const validPassword = validatePassword;
-  const validConfirm = validateConfirmPassword;
-  const validCheckbox = validateCheckbox;
-  const errorElements = document.querySelectorAll('#error-msg');
-
-  if (!(validUsername && validEmail && validPassword && validConfirm && validCheckbox)) {
-    errorElement.textContent ="";
-    errorElement.classList.add('show');
-    errorElement.textContent = "Please fix the errors above.";
-    event.preventDefault();
-    return;
-  }
-}
 
 function setupToggle() {
   const togglePasswordBtn = document.getElementById('toggle-password');
@@ -85,18 +70,19 @@ function validateConfirmPassword() {
 
 function onEmailJson(json) {
     const errorElement = document.getElementById('email-error');
-
     if (json && json.exists) {
     errorElement.textContent ="";
     errorElement.classList.remove('show');
     errorElement.classList.add('ok');
     errorElement.textContent = "Valid email";
+    formStatus.email = true;
     }
     else {
     errorElement.textContent ="";
     errorElement.classList.remove('ok');
     errorElement.classList.add('show');
     errorElement.textContent = "Invalid email";
+    formStatus.email = false;
     }
 
 }
@@ -123,6 +109,23 @@ function checkEmail(event) {
     .then(onEmailJson);
 }
 
+function checkSignup(event) {
+  const validPassword = validatePassword();
+  const validConfirm = validateConfirmPassword();
+  const errorElement = document.querySelector('#error-message');
+
+  if (!(formStatus.email && validPassword && validConfirm)) {
+    errorElement.textContent ="";
+    errorElement.classList.add('show');
+    errorElement.textContent = "Please fix the errors above.";
+    event.preventDefault();
+    return;
+  }
+}
+
+var formStatus = {
+  email: false
+};
 
 function onDomContentLoaded(){
     document.querySelector('#email').addEventListener('blur', checkEmail);
