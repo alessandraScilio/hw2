@@ -19,6 +19,8 @@ Route::post('/login', [LoginController::class, 'do_login'])->name('do_login.form
 
 Route::get('/signup', [SignupController::class, 'signup_form'])->name('signup.form');
 Route::post('/signup', [SignupController::class, 'do_signup'])->name('do.form');
+Route::post('/check_username', [SignupController::class, 'check_username']);
+Route::post('/check_email', [SignupController::class, 'check_email']);
 
 Route::get('/reset', [ResetController::class, 'reset_form'])->name('reset.form');
 Route::post('/reset', [ResetController::class, 'do_reset'])->name('do_reset.form');

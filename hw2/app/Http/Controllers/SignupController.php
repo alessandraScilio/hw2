@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Session;
 
 class SignupController extends BaseController
@@ -18,6 +19,7 @@ class SignupController extends BaseController
         Session::forget('error');
         return view('signup')->with('error', $error);
     }
+
 
     public function do_signup()
     {
@@ -83,5 +85,18 @@ class SignupController extends BaseController
         Session::flush();
         return redirect('login');
     }
+
+    public function check_username(Request $request){
+        $username = request('username');
+        $exists = User::where('username', $username)->exists();
+        return response()->json(['exists' => $exists]);
+    }
+
+    public function check_email(Request $request){
+        $email = request('email');
+        $exists = User::where('email', $email)->exists();
+        return response()->json(['exists' => $exists]);
+    }
+
 
 }

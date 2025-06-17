@@ -89,12 +89,11 @@
                 </select>
             </div>
         </div>
-
         <div class="form-submit">
             <input type="submit" id="submit" value="Search Flights">
         </div>
     </form>
-
+    
     <section class="error-message" id="error"></section>
     <div id="flight-result"></div>
 </section>
