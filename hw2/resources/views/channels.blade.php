@@ -10,7 +10,7 @@
     <script>
     const BASE_URL = "{{ url('/') }}/"
   </script>
-    <script src="{{ url('js/.js') }}"></script>
+    <script src="{{ url('js/channels.js') }}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
   </head>
   <nav id="nav-container">
@@ -33,6 +33,8 @@
     </div>
   </div>
 </nav>
+<div id="menu-overlay" class="hidden"></div>
+
 
 <body>
 
