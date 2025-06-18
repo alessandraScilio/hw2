@@ -54,7 +54,7 @@ class FlightController extends BaseController
         return $decoded['data'][0]['iataCode'] ?? null;
     }
 
-    private function searchFlights($originIATA, $destinationIATA, $departureDate, $returnDate, $accessToken, $adults = 1) 
+    private function searchFlights($originIATA, $destinationIATA, $departureDate, $returnDate, $accessToken, $adults) 
     {
         $queryString = 
             'originLocationCode=' . urlencode($originIATA) .
@@ -100,6 +100,7 @@ class FlightController extends BaseController
         $destinationCity = $request->input('destination_city');
         $departureDate = $request->input('departure_date');
         $returnDate = $request->input('return_date');
+        $passengers = $request->input('passengers');
 
         if ($departureDate >= $returnDate) {
         return response()->json([
@@ -113,7 +114,7 @@ class FlightController extends BaseController
             return response()->json(['error' => 'IATA codes not found.'], 400);
         } 
 
-        $flights = $this->searchFlights($departureIATA, $destinationIATA, $departureDate, $returnDate, $accessToken);
+        $flights = $this->searchFlights($departureIATA, $destinationIATA, $departureDate, $returnDate, $accessToken, $passengers);
         return response()->json($flights);
     }
 

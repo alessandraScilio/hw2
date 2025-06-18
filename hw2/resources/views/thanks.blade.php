@@ -14,7 +14,7 @@
 <body>
 <div id="thankyou-container">
     <h1>Thanks for your purchase!</h1>
-    <p>Wish you a great trip.</p>
+    <p>Wish you a great trip</p>
     <a href="{{ route('flight') }}">Back to TravelHub.</a>
   </div>
 

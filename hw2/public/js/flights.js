@@ -180,8 +180,84 @@ function handleResponse(response) {
     return response.json();
 }
 
+function isFutureDate(dateStr) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return new Date(dateStr) >= today;
+}
+
+function showDateError(elementId, message) {
+  const errorDiv = document.getElementById(elementId);
+  errorDiv.textContent = message;
+}
+
+function clearDateError(elementId) {
+  const errorDiv = document.getElementById(elementId);
+  errorDiv.textContent = '';
+}
+
+function validateCitiesDifferent() {
+  const departureCity = document.getElementById('departure-input').value.trim().toLowerCase();
+  const destinationCity = document.getElementById('destination-input').value.trim().toLowerCase();
+  const errorMessage = document.getElementById('city-error');
+  
+  errorMessage.textContent = '';
+
+  if (departureCity && destinationCity && departureCity === destinationCity) {
+    errorMessage.textContent = "Departure and destination cities must be different.";
+    return false;
+  }
+
+  return true;
+}
+
+function validateDepartureDate() {
+  const input = document.getElementById('departure-date');
+  if (!input.value || !isFutureDate(input.value)) {
+    showDateError('departure-error', "Wrong departure date.");
+    return false;
+  }
+  clearDateError('departure-error');
+  return true;
+}
+
+
+function validateReturnDate() {
+  const departure = document.getElementById('departure-date');
+  const ret = document.getElementById('return-date');
+  const depDate = new Date(departure.value);
+  const retDate = new Date(ret.value);
+
+  if (!ret.value || !isFutureDate(ret.value) || retDate < depDate) {
+    showDateError('return-error', "Wrong return date.");
+    return false;
+  } 
+  clearDateError('return-error');
+  return true;
+}
+
+
+
 function handleFlightSearch(event) {
-    event.preventDefault();        
+    event.preventDefault();       
+    
+    const validDeparture = validateDepartureDate();
+    const validReturn = validateReturnDate();
+    const validCities = validateCitiesDifferent();
+
+
+    const generalError = document.getElementById('error-message');
+    
+    if (!validDeparture || !validReturn || !validCities) {
+          generalError.classList.add('error-message');
+          generalError.textContent = "Please correct the errors before submitting.";
+      return;
+    }
+
+
+    generalError.classList.remove('error-message');
+    generalError.textContent = ''; 
+    
     const form = document.getElementById('flight-search-form');
     const formData = new FormData(form);
 
@@ -198,8 +274,6 @@ function handleFlightSearch(event) {
     .catch(handleError);
 }
 
-const submitBtn = document.getElementById('submit');
-submitBtn.addEventListener('click', handleFlightSearch);
 
 
 function checkOut() {
@@ -385,6 +459,13 @@ function onDomLoaded() {
     if (cartButton) {
     cartButton.addEventListener('click', handleCartToggle);
     }
+
+    document.getElementById('departure-date').addEventListener('blur', validateDepartureDate);
+    document.getElementById('return-date').addEventListener('blur', validateReturnDate);
+    document.getElementById('destination-input').addEventListener('blur', validateCitiesDifferent);
+    const submitBtn = document.getElementById('submit');
+    submitBtn.addEventListener('click', handleFlightSearch);
+
 }
 
 

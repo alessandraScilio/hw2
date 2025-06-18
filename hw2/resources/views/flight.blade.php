@@ -57,27 +57,30 @@
         @csrf
         <div class="form-row">
             <div class="form-group">
-                <label for="departure-input">Departure city</label>
-                <input type="text" id="departure-input" name="departure_city" placeholder="City name" required>
+            <label for="departure-input">Departure city</label>
+            <input type="text" id="departure-input" name="departure_city" placeholder="City name" required>
             </div>
             
             <div class="form-group">
-                <label for="destination-input">Destination city</label>
-                <input type="text" id="destination-input" name="destination_city" placeholder="City name" required>
+            <label for="destination-input">Destination city</label>
+            <input type="text" id="destination-input" name="destination_city" placeholder="City name" required>
+            <div id="city-error" class="date-error"></div>   
             </div>
-        </div>
+            </div>
 
-        <div class="form-row">
+            <div class="form-row">
             <div class="form-group">
-                <label for="departure-date">Departure date</label>
-                <input type="date" id="departure-date" name="departure_date" required>
+            <label for="departure-date">Departure date</label>
+            <input type="date" id="departure-date" name="departure_date" required>
+            <div id="departure-error" class="date-error"></div>
             </div>
             
             <div class="form-group">
-                <label for="return-date">Return date</label>
-                <input type="date" id="return-date" name="return_date" required> 
+            <label for="return-date">Return date</label>
+            <input type="date" id="return-date" name="return_date" required> 
+            <div id="return-error" class="date-error"></div>
             </div>
-            
+
             <div class="form-group">
                 <label for="passengers">Passengers</label>
                 <select id="passengers" name="passengers">
@@ -93,10 +96,10 @@
             <input type="submit" id="submit" value="Search Flights">
         </div>
     </form>
-    
-    <section class="error-message" id="error"></section>
+        
+    <section id="error-message"></section>
     <div id="flight-result"></div>
-</section>
+    </section>
 
   <footer class="site-footer">
   <div class="footer-container">
