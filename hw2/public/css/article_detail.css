@@ -39,6 +39,22 @@
   border-color: var(--marrone);
 }
 
+.article-detail .liked {
+  display: inline-block;
+  background-color: var(--marrone);
+  color: whitesmoke;
+  text-decoration: none;
+  padding: 7px 15px;
+  font-size: 1rem;
+  border-radius: 50px;
+  margin-top: 20px;
+  border-color: var(--marrone);
+}
+
 .article-detail .like-button:hover {
   background-color: var(--sabbia-hover);
+}
+
+.article-detail .liked:hover {
+  background-color: var(--marrone);
 }

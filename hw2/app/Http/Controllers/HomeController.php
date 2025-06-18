@@ -35,4 +35,12 @@ class HomeController extends BaseController
         return $topArticles;
     }
 
+    public function channels(){
+          if(!Session::get('user_id')){
+            return redirect('login');
+        }    
+        $user = User::find(Session::get('user_id'));
+        return view('channels')->with('username', $user->username);
+    }
+
 }

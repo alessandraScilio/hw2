@@ -68,9 +68,7 @@
 
 .liked-post {
   background: white;
-  padding: 12px; 
-  padding-bottom: 20px;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   border-radius: 8px;
   display: flex;
@@ -93,7 +91,6 @@
   text-decoration: none;
   font-family: var(--title-font);
   font-size: 1rem;
-  margin-top: auto;
   padding: 4px 0;
 }
 

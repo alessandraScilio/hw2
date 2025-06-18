@@ -12,12 +12,12 @@
         <div id="nav-content">
         <a href="home.php" id="site-name">TravelHub</a>
   
-        <div id="menu-container">
-           <a class="menu-item" href="articles.php">Articles</a>
-           <a class="menu-item" href="flights.php">Flights</a>
-           <a class="menu-item" href="#">Hotels</a>
-           <a class="menu-item" href="#">Channels</a>
-        </div>
+         <div id="menu-container">
+      <a class="menu-item" href="{{ route('flight') }}">Flights</a>
+      <a class="menu-item" href="{{ route('article') }}">Articles</a>
+      <a class="menu-item" href="{{ route('channels') }}">Channels</a>
+      <a class="menu-item" href="{{ route('account') }}">Account</a>
+    </div>
 
         <div id="auth-buttons">
         <a class="auth-button" href="{{ route('login.form') }}">Login</a>

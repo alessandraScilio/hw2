@@ -47,9 +47,11 @@ function handleStatusJSON(data) {
   newButton.setAttribute('data-article-id', articleId);
 
   if (data.liked) {
+    newButton.classList.add('liked');
     newButton.textContent = 'Remove from favourites';
     newButton.addEventListener('click', getUnlikeHandler(articleId));
   } else {
+    newButton.classList.remove('liked');
     newButton.textContent = 'Add to favourites';
     newButton.addEventListener('click', getLikeHandler(articleId));
   }

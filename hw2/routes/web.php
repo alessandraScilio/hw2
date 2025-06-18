@@ -27,6 +27,7 @@ Route::post('/reset', [ResetController::class, 'do_reset'])->name('do_reset.form
 
 Route::get('/home', [HomeController::class, 'home'])->name('home');
 Route::get('list', [HomeController::class, 'list']);
+Route::get('/channels', [HomeController::class, 'channels'])->name('channels');
 
 Route::get('/flight', [FlightController::class, 'flight'])->name('flight');
 Route::post('/search', [FlightController::class, 'search']);
@@ -48,6 +49,7 @@ Route::get('/article/{id}', [ArticleController::class, 'show']);
 Route::post('/status', [ArticleController::class, 'status']);
 Route::post('/like', [ArticleController::class, 'like']);
 Route::post('/unlike', [ArticleController::class, 'unlike']);
+
 
 Route::get('/account', [AccountController::class, 'account'])->name('account');
 Route::post('/favs', [AccountController::class, 'favs']);

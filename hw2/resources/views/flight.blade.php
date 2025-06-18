@@ -23,10 +23,10 @@
    </button>
     <a href="{{ url('home') }}" id="site-name">TravelHub</a>
 
-    <div id="menu-container">
+     <div id="menu-container">
       <a class="menu-item" href="{{ route('flight') }}">Flights</a>
       <a class="menu-item" href="{{ route('article') }}">Articles</a>
-      <a class="menu-item" href="#">Hotels</a>
+      <a class="menu-item" href="{{ route('channels') }}">Channels</a>
       <a class="menu-item" href="{{ route('account') }}">Account</a>
     </div>
 

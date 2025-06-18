@@ -9,7 +9,6 @@ function showSlide(n) {
   }
   
   currentSlide = (n + slides.length) % slides.length;
-  
   slides[currentSlide].classList.add('active');
 }
 
@@ -49,7 +48,6 @@ function initCarousel() {
   const slideshow = document.querySelector('.header-slideshow');
   slideshow.addEventListener('mouseenter', stopSlideShow);
   slideshow.addEventListener('mouseleave', startSlideShow);
-  
   startSlideShow();
 }
 

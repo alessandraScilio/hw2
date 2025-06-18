@@ -1,0 +1,36 @@
+.social-section {
+  padding: 2rem;
+  font-family: var(--title-font);
+  color: var(--nero);
+  text-align: center;
+}
+
+.social-section h2 {
+  margin: 30px auto;
+  font-size: 1.8rem;
+  color: var(--marrone);
+}
+
+.social-section p {
+  margin: 30px auto;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.social-section a {
+  color: var(--marrone);
+  transition: color 0.3s ease;
+}
+
+.social-section a:hover {
+  color: var(--nero);
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

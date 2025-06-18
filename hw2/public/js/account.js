@@ -29,7 +29,7 @@ function onJson(favourites) {
         postLink.className = 'liked-post-title';
 
         const postTitle = document.createElement('h3');
-        postTitle.textContent = favourite.title;
+        postTitle.textContent = favourite.title.length  > 20 ? favourite.title.substring(0, 20) + '...' : favourite.title;
         postLink.appendChild(postTitle);
 
         postElement.appendChild(postLink);
